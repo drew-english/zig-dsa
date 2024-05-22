@@ -4,7 +4,7 @@ fn left_child(i: usize) usize {
     return 2 * i + 1;
 }
 
-fn heapSort(array: []i32) void {
+fn heap_sort(array: []i32) void {
     var start = array.len / 2; // leaf nodes are balanced, start at first inner node
     var end = array.len;
 
@@ -47,7 +47,7 @@ fn heapSort(array: []i32) void {
     }
 }
 
-test heapSort {
+test heap_sort {
     const n = 20;
     const random = std.crypto.random;
 
@@ -56,7 +56,7 @@ test heapSort {
         array[i] = random.int(i32);
     }
 
-    heapSort(&array);
+    heap_sort(&array);
     for (1..n) |i| {
         try std.testing.expect(array[i - 1] <= array[i]);
     }
