@@ -35,6 +35,7 @@ pub fn build(b: *std.Build) !void {
             .optimize = optimize,
         });
 
+        b.installArtifact(exe_tests);
         const run_tests = b.addRunArtifact(exe_tests);
         const test_step = b.step(fname, try std.mem.concat(b.allocator, u8, &.{ "(", type_name, ") Test ", fname }));
         test_step.dependOn(&run_tests.step);
